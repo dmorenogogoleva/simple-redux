@@ -1,6 +1,7 @@
 {
   "name": "todos",
   "version": "0.0.1",
+  "homepage": "./",
   "private": true,
   "devDependencies": {
     "eslint": "^6.6.0",
