@@ -6,7 +6,6 @@ import { noop } from '../shared'
 import { Store } from '../propTypes/Store'
 
 export const TodoList = ({ todos, toggleTodo = noop }) => {
-  console.log('todos:', todos)
   return (<div>
     <ul>
       {todos?.map(todo =>
