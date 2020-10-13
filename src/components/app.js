@@ -1,24 +1,41 @@
 import React, { useState } from 'react'
-import { addTodo, toggleTodo } from '../actions'
 import { Store } from '../propTypes/Store'
 import { TodoList } from './todo-list'
+import { ADD_TODO, fetchTodo, TOGGLE_TODO } from '../actions'
 
 const initialText = ''
+let todoId = 0
 
 export const App = ({ store }) => {
-  const [text, setText] = useState(initialText)
   const [todos, setTodos] = useState([])
+  const [text, setText] = useState(initialText)
 
   function add() {
-    store.dispatch(addTodo(text))
-    setTodos(store.getState())
+    if (text.length === 0) return
+
+    store.dispatch({
+      type: ADD_TODO,
+      id: ++todoId,
+      text
+    })
 
     setText(initialText)
+    setTodos(store.getState())
   }
 
   function toggle(id) {
-    store.dispatch(toggleTodo(id))
+    store.dispatch({
+      type: TOGGLE_TODO,
+      id,
+      completed: false
+    })
+
     setTodos(store.getState())
+  }
+
+
+  function fetchNewTodo() {
+    store.dispatch(fetchTodo(++todoId, setTodos))
   }
 
   return (
@@ -30,6 +47,8 @@ export const App = ({ store }) => {
         onChange={(evt) => setText(evt.target.value)}
       />
       <button type="button" onClick={add}>add</button>
+
+      <button type="button" onClick={fetchNewTodo}>fetch</button>
 
       <TodoList todos={todos}
         toggleTodo={toggle}

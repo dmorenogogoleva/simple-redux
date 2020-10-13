@@ -1,6 +1,5 @@
 import React from 'react'
 import { Todo } from './todo'
-import { Todo as TodoType } from '../propTypes/Todo'
 import PropTypes from 'prop-types'
 import { noop } from '../shared'
 import { Store } from '../propTypes/Store'
@@ -21,6 +20,10 @@ export const TodoList = ({ todos, toggleTodo = noop }) => {
 
 TodoList.propTypes = {
   store: Store,
-  todos: PropTypes.arrayOf(TodoType).isRequired,
+  todos: PropTypes.arrayOf(PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    completed: PropTypes.bool,
+    text: PropTypes.string.isRequired
+  })).isRequired,
   toggleTodo: PropTypes.func.isRequired
 }
