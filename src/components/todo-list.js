@@ -1,5 +1,5 @@
 import React from 'react'
-import { Todo } from './todo'
+import { Todo } from './todo/todo'
 import PropTypes from 'prop-types'
 import { noop } from '../shared'
 import { Store } from '../propTypes/Store'

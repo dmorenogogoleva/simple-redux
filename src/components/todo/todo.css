@@ -1,0 +1,9 @@
+.todo {
+  margin-bottom: 16px;
+  transition: background-color 200ms ease;
+}
+
+.todo:hover {
+  background-color: var(--purple-pale);
+  cursor: pointer;
+}

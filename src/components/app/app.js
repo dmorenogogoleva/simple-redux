@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
-import { Store } from '../propTypes/Store'
-import { TodoList } from './todo-list'
-import { ADD_TODO, fetchTodo, TOGGLE_TODO } from '../actions'
+import { Store } from '../../propTypes/Store'
+import { TodoList } from '../todo-list'
+import { ADD_TODO, fetchTodo, TOGGLE_TODO } from '../../actions'
+
+import './app.css'
 
 const initialText = ''
 let todoId = 0
@@ -39,21 +41,30 @@ export const App = ({ store }) => {
   }
 
   return (
-    <div>
-      <input
-        placeholder="add new todo"
-        name="todo"
-        value={text || initialText}
-        onChange={(evt) => setText(evt.target.value)}
-      />
-      <button type="button" onClick={add}>add</button>
+    <>
+      <div className='panel'>
+        <input
+          className='input'
+          placeholder="start typing..."
+          name="todo"
+          value={text || initialText}
+          onChange={(evt) => setText(evt.target.value)}
+        />
+        <button
+          disabled={text.length === 0}
+          type="button" onClick={add}>add</button>
 
-      <button type="button" onClick={fetchNewTodo}>fetch</button>
-
+        <button
+          className="button__secondary button__fetch"
+          type="button"
+          onClick={fetchNewTodo}>
+          fetch
+        </button>
+      </div>
       <TodoList todos={todos}
         toggleTodo={toggle}
       />
-    </div>)
+    </>)
 }
 
 
