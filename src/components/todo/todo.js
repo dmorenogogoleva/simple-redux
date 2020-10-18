@@ -1,8 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './todo.css'
 
 export const Todo = ({ onClick, completed = false, text }) => (
   <li
+    className="todo"
     onClick={onClick}
     style={{
       textDecoration: completed ? 'line-through' : 'none'
