@@ -63,10 +63,6 @@ button:disabled {
     --common-font-size: 20px;
   }
 
-  .panel {
-    display: flex;
-  }
-
   .button__fetch {
     margin-left: auto;
   }
